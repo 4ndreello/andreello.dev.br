@@ -17,7 +17,6 @@
 			setCurrentTheme()
 
 			function createTheme() {
-				debugger
 				const currentTheme = window.localStorage.getItem("theme")
 				if (!currentTheme) {
 					window.localStorage.setItem("theme", "white")
@@ -25,7 +24,6 @@
 			}
 
 			function setCurrentTheme() {
-				debugger
 				const IsWhiteTheme = storage.getItem("theme") === "white"
 
 				root_theme.style.setProperty(
@@ -39,7 +37,6 @@
 			}
 
 			function changeTheme() {
-				debugger
 				const currentTheme = window.localStorage.getItem("theme")
 				window.localStorage.setItem(
 					"theme",
