@@ -14,7 +14,7 @@
 
 @font-face {
 	font-family: "Comic";
-	src: url("../comic.woff") format("woff");
+	src: url("./comic.woff") format("woff");
 }
 
 h1,
