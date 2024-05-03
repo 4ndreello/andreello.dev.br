@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./css/styles.css" />
+		<title>Backend Developer</title>
+		<script>
+			let IsWhiteTheme = true
+			const root_theme = document.querySelector(":root")
+			const colors = {
+				BLACK: "#000",
+				WHITE: "#FFF",
+			}
+
+			function changeTheme() {
+				root_theme.style.setProperty(
+					"--bgColor",
+					IsWhiteTheme ? colors.BLACK : colors.WHITE
+				)
+				root_theme.style.setProperty(
+					"--textColor",
+					IsWhiteTheme ? colors.WHITE : colors.BLACK
+				)
+				IsWhiteTheme = !IsWhiteTheme
+			}
+		</script>
+	</head>
+	<body>
+		<div class="box">
+			<h1 class="largeFont">Gabriel Andreello</h1>
+			<h2 class="mediumFont">Back-end Developer</h2>
+		</div>
+
+		<div class="box">
+			<h1 class="largeFont">SOBRE</h1>
+
+			<div class="about-me">
+				<p>
+					Entusiasta na área de desenvolvimento de sistemas e
+					cibersegurança, apaixonado por tecnologia e aluno de Ciência da
+					Computação na EEP (5 semestre). Participei de equipes de P&D
+					(Pesquisa e desenvolvimento) com foco em melhorias no desempenho,
+					segurança e estabilidade de sistemas web, desenvolvendo: sistemas
+					de recuperação de senha, token, direito de acesso, etc.
+					Habilidade com: Delphi, Nodejs e JavaScript, SQL, HTML, CSS,
+					TypeScript, MongoDB, GIT, & Segurança na Web.
+				</p>
+			</div>
+		</div>
+
+		<div class="box">
+			<div>
+				Github:
+				<a target="_blank" href="https://github.com/4ndreello"
+					>github.com/4ndreello</a
+				>
+			</div>
+
+			<div>
+				Codewars:
+				<a target="_blank" href="https://codewars.com/users/4ndreello"
+					>codewars.com/users/4ndreello</a
+				>
+			</div>
+
+			<div>
+				Linkedin:
+				<a
+					target="_blank"
+					href="https://www.linkedin.com/in/gabrielandreello/"
+					>linkedin.com/in/gabrielandreello</a
+				>
+			</div>
+		</div>
+
+		<div class="box">
+			<p title="click me" onclick="changeTheme()" class="passion">
+				graphic design is my passion
+			</p>
+		</div>
+	</body>
+</html>
