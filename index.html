@@ -6,23 +6,46 @@
 		<link rel="stylesheet" href="./css/styles.css" />
 		<title>Backend Developer</title>
 		<script>
-			let IsWhiteTheme = true
 			const root_theme = document.querySelector(":root")
+			const storage = window.localStorage
 			const colors = {
 				BLACK: "#000",
 				WHITE: "#FFF",
 			}
 
-			function changeTheme() {
+			createTheme()
+			setCurrentTheme()
+
+			function createTheme() {
+				debugger
+				const currentTheme = window.localStorage.getItem("theme")
+				if (!currentTheme) {
+					window.localStorage.setItem("theme", "white")
+				}
+			}
+
+			function setCurrentTheme() {
+				debugger
+				const IsWhiteTheme = storage.getItem("theme") === "white"
+
 				root_theme.style.setProperty(
 					"--bgColor",
-					IsWhiteTheme ? colors.BLACK : colors.WHITE
+					IsWhiteTheme ? colors.WHITE : colors.BLACK
 				)
 				root_theme.style.setProperty(
 					"--textColor",
-					IsWhiteTheme ? colors.WHITE : colors.BLACK
+					IsWhiteTheme ? colors.BLACK : colors.WHITE
 				)
-				IsWhiteTheme = !IsWhiteTheme
+			}
+
+			function changeTheme() {
+				debugger
+				const currentTheme = window.localStorage.getItem("theme")
+				window.localStorage.setItem(
+					"theme",
+					currentTheme === "white" ? "dark" : "white"
+				)
+				setCurrentTheme()
 			}
 		</script>
 	</head>
