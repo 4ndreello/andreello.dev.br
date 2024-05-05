@@ -45,6 +45,11 @@ function setCurrentTheme() {
 		"--textColor",
 		IsWhiteTheme ? colors.BLACK : colors.WHITE
 	)
+
+	root_theme.style.setProperty(
+		"--secondaryColor",
+		IsWhiteTheme ? "rgb(181, 75, 75)" : "rgb(75, 78, 181)"
+	)
 }
 
 function changeTheme() {

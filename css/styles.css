@@ -45,7 +45,7 @@ h2 {
 }
 
 .passion:hover {
-	color: red;
+	color: var(--secondaryColor);
 	cursor: pointer;
 }
 
@@ -75,9 +75,8 @@ a {
 }
 
 .outline:hover {
-	color: red;
 	cursor: pointer;
-	box-shadow: 5px -12px red;
+	box-shadow: 5px -12px var(--secondaryColor);
 	transition: 300ms;
 }
 
