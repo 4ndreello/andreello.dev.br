@@ -39,9 +39,24 @@ const colors = { BLACK: "#000", WHITE: "#FFF" }
 /**
  * SETUP
  */
+
 window.onload = () => {
 	createTheme()
 	setCurrentTheme()
+
+	const currentSemester = (dateFrom, dateTo) => {
+		const result =
+			dateTo.getMonth() -
+			dateFrom.getMonth() +
+			12 * (dateTo.getFullYear() - dateFrom.getFullYear())
+
+		return Math.ceil(result / 6)
+	}
+
+	$("semestre").textContent = currentSemester(
+		new Date("01-01-2022"),
+		new Date()
+	)
 
 	for (const project of projects) {
 		project()
