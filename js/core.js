@@ -36,6 +36,9 @@ const root_theme = document.querySelector(":root")
 const storage = window.localStorage
 const colors = { BLACK: "#000", WHITE: "#FFF" }
 
+/**
+ * SETUP
+ */
 window.onload = () => {
 	createTheme()
 	setCurrentTheme()
@@ -45,6 +48,9 @@ window.onload = () => {
 	}
 }
 
+/**
+ * UTILS
+ */
 function isMobile() {
 	return Boolean(
 		navigator.userAgent.match(/Android/i) ||
@@ -56,6 +62,7 @@ function isMobile() {
 			navigator.userAgent.match(/Windows Phone/i)
 	)
 }
+
 const $ = (id) => document.getElementById(id)
 
 /**
@@ -82,7 +89,7 @@ function setCurrentTheme() {
 
 	root_theme.style.setProperty(
 		"--secondaryColor",
-		IsWhiteTheme ? "rgb(181, 75, 75)" : "rgb(75, 78, 181)"
+		IsWhiteTheme ? "rgb(181, 75, 75)" : "#532991"
 	)
 }
 
@@ -123,6 +130,7 @@ function addProject(data) {
 
 			const projectName = document.createElement("h1")
 			projectName.textContent = projectNameText
+			projectName.style.wordBreak = ""
 
 			const description = document.createElement("p")
 			description.textContent = descriptionText

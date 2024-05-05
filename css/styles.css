@@ -42,7 +42,6 @@ h2 {
 .passion {
 	font-family: "Comic", Fallback, sans-serif;
 	font-style: italic;
-	display: inline;
 }
 
 .passion:hover {
