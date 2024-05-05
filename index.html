@@ -5,46 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="./css/styles.css" />
 		<title>Backend Developer</title>
-		<script>
-			const root_theme = document.querySelector(":root")
-			const storage = window.localStorage
-			const colors = {
-				BLACK: "#000",
-				WHITE: "#FFF",
-			}
-
-			createTheme()
-			setCurrentTheme()
-
-			function createTheme() {
-				const currentTheme = window.localStorage.getItem("theme")
-				if (!currentTheme) {
-					window.localStorage.setItem("theme", "white")
-				}
-			}
-
-			function setCurrentTheme() {
-				const IsWhiteTheme = storage.getItem("theme") === "white"
-
-				root_theme.style.setProperty(
-					"--bgColor",
-					IsWhiteTheme ? colors.WHITE : colors.BLACK
-				)
-				root_theme.style.setProperty(
-					"--textColor",
-					IsWhiteTheme ? colors.BLACK : colors.WHITE
-				)
-			}
-
-			function changeTheme() {
-				const currentTheme = window.localStorage.getItem("theme")
-				window.localStorage.setItem(
-					"theme",
-					currentTheme === "white" ? "dark" : "white"
-				)
-				setCurrentTheme()
-			}
-		</script>
+		<script src="./js/core.js"></script>
 	</head>
 	<body>
 		<div class="box">
@@ -93,6 +54,12 @@
 					>linkedin.com/in/gabrielandreello</a
 				>
 			</div>
+		</div>
+
+		<div class="box">
+			<h1 class="largeFont">PROJETOS</h1>
+
+			<div id="projects"></div>
 		</div>
 
 		<div class="box">

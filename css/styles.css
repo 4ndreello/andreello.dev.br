@@ -1,6 +1,7 @@
 :root {
 	--bgColor: #fff;
 	--textColor: #000;
+	--secondaryColor: rgb(181, 75, 75);
 }
 
 * {
@@ -47,6 +48,7 @@ h2 {
 	color: red;
 	cursor: pointer;
 }
+
 .about-me {
 	text-wrap: balance;
 }
@@ -59,5 +61,36 @@ h2 {
 }
 
 a {
-	color: rgb(139, 89, 89);
+	color: var(--secondaryColor);
+}
+
+.outline {
+	border: 1px solid;
+	border-radius: 5px;
+	box-shadow: 5px -5px var(--secondaryColor);
+	padding: 15px;
+	margin-right: 10px;
+	margin-top: 8px;
+	max-width: 250px;
+}
+
+.outline:hover {
+	color: red;
+	cursor: pointer;
+	box-shadow: 5px -12px red;
+	transition: 300ms;
+}
+
+#projects {
+	display: flex;
+}
+
+@media (max-width: 400px) {
+	#projects {
+		display: block;
+	}
+
+	.outline {
+		margin-bottom: 15px;
+	}
 }
