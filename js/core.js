@@ -22,6 +22,17 @@ window.onload = () => {
 	})
 }
 
+function isMobile() {
+	return Boolean(
+		navigator.userAgent.match(/Android/i) ||
+			navigator.userAgent.match(/webOS/i) ||
+			navigator.userAgent.match(/iPhone/i) ||
+			navigator.userAgent.match(/iPad/i) ||
+			navigator.userAgent.match(/iPod/i) ||
+			navigator.userAgent.match(/BlackBerry/i) ||
+			navigator.userAgent.match(/Windows Phone/i)
+	)
+}
 const $ = (id) => document.getElementById(id)
 
 /**
@@ -95,6 +106,10 @@ function addProject(data) {
 		container.appendChild(projectName)
 		container.appendChild(description)
 		container.addEventListener("click", () => {
+			if (isMobile()) {
+				window.open(url)
+				return
+			}
 			window.open(url, "mozzilaWindow", "popup")
 		})
 	} finally {
