@@ -8,13 +8,24 @@ const projects = [
 		projectNameText: "DOCUments",
 		customURL: "https://github.com/docu-wiki-br/docu",
 		descriptionText:
-			"É uma simples Wiki que permite usuários criarem, editarem e deletarem DOCUmentos.",
+			"É uma simples Wiki que permite usuários criarem, editarem e deletarem DOCUmentos. Ainda em fase de desenvolvimento.",
 	}),
+
 	addProject({
 		languageText: "Java",
 		projectNameText: "Java-Tree",
 		descriptionText:
 			"Ao passar uma arquivo HTML, ele pega o texto com o elemento mais profundo",
+	}),
+
+	addProject({
+		languageText: "Node.js / Express",
+		projectNameText: "WebPolibrasil",
+		clickCallback: () => {
+			alert("Projeto privado :(")
+		},
+		descriptionText:
+			"Um projeto CRUD privado para uma escola, que contém: cadastros (aluno, professor, turma, ...), emissão de boletim e relatórios, etc.",
 	}),
 ]
 
@@ -90,7 +101,8 @@ function changeTheme() {
 
 function addProject(data) {
 	return () => {
-		const { descriptionText, languageText, projectNameText } = data
+		const { clickCallback, descriptionText, languageText, projectNameText } =
+			data
 
 		if (!descriptionText || !languageText || !projectNameText) {
 			return
@@ -106,10 +118,10 @@ function addProject(data) {
 		try {
 			container.className = "outline"
 
-			const language = document.createElement("h1")
+			const language = document.createElement("h2")
 			language.textContent = languageText
 
-			const projectName = document.createElement("h2")
+			const projectName = document.createElement("h1")
 			projectName.textContent = projectNameText
 
 			const description = document.createElement("p")
@@ -119,6 +131,10 @@ function addProject(data) {
 			container.appendChild(projectName)
 			container.appendChild(description)
 			container.addEventListener("click", () => {
+				if (clickCallback) {
+					return clickCallback()
+				}
+
 				if (isMobile()) {
 					window.open(url)
 					return
