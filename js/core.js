@@ -1,3 +1,26 @@
+/**
+ * CONFIGURATION
+ */
+
+const projects = [
+	addProject({
+		languageText: "Next.js",
+		projectNameText: "DOCUments",
+		customURL: "https://github.com/docu-wiki-br/docu",
+		descriptionText:
+			"É uma simples Wiki que permite usuários criarem, editarem e deletarem DOCUmentos.",
+	}),
+	addProject({
+		languageText: "Java",
+		projectNameText: "Java-Tree",
+		descriptionText:
+			"Ao passar uma arquivo HTML, ele pega o texto com o elemento mais profundo",
+	}),
+]
+
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+
 const root_theme = document.querySelector(":root")
 const storage = window.localStorage
 const colors = { BLACK: "#000", WHITE: "#FFF" }
@@ -6,20 +29,9 @@ window.onload = () => {
 	createTheme()
 	setCurrentTheme()
 
-	addProject({
-		languageText: "Next.js",
-		projectNameText: "DOCUments",
-		customURL: "https://github.com/docu-wiki-br/docu",
-		descriptionText:
-			"É uma simples Wiki que permite usuários criarem, editarem e deletarem DOCUmentos.",
-	})
-
-	addProject({
-		languageText: "Java",
-		projectNameText: "Java-Tree",
-		descriptionText:
-			"Ao passar uma arquivo HTML, ele pega o texto com o elemento mais profundo",
-	})
+	for (const project of projects) {
+		project()
+	}
 }
 
 function isMobile() {
@@ -73,46 +85,48 @@ function changeTheme() {
 }
 
 /**
- * GENERATE PROJECT BOXES
+ * INCLUDE PROJECT
  */
 
 function addProject(data) {
-	const { descriptionText, languageText, projectNameText } = data
+	return () => {
+		const { descriptionText, languageText, projectNameText } = data
 
-	if (!descriptionText || !languageText || !projectNameText) {
-		return
-	}
+		if (!descriptionText || !languageText || !projectNameText) {
+			return
+		}
 
-	let url = `https://github.com/4ndreello/${projectNameText}`
-	if (data.customURL) {
-		url = data.customURL
-	}
+		let url = `https://github.com/4ndreello/${projectNameText}`
+		if (data.customURL) {
+			url = data.customURL
+		}
 
-	const projectsContainer = $("projects")
-	const container = document.createElement("div")
-	try {
-		container.className = "outline"
+		const projectsContainer = $("projects")
+		const container = document.createElement("div")
+		try {
+			container.className = "outline"
 
-		const language = document.createElement("h1")
-		language.textContent = languageText
+			const language = document.createElement("h1")
+			language.textContent = languageText
 
-		const projectName = document.createElement("h2")
-		projectName.textContent = projectNameText
+			const projectName = document.createElement("h2")
+			projectName.textContent = projectNameText
 
-		const description = document.createElement("p")
-		description.textContent = descriptionText
+			const description = document.createElement("p")
+			description.textContent = descriptionText
 
-		container.appendChild(language)
-		container.appendChild(projectName)
-		container.appendChild(description)
-		container.addEventListener("click", () => {
-			if (isMobile()) {
-				window.open(url)
-				return
-			}
-			window.open(url, "mozzilaWindow", "popup")
-		})
-	} finally {
-		projectsContainer.appendChild(container)
+			container.appendChild(language)
+			container.appendChild(projectName)
+			container.appendChild(description)
+			container.addEventListener("click", () => {
+				if (isMobile()) {
+					window.open(url)
+					return
+				}
+				window.open(url, "mozzilaWindow", "popup")
+			})
+		} finally {
+			projectsContainer.appendChild(container)
+		}
 	}
 }
