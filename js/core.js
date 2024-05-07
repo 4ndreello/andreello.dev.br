@@ -54,7 +54,7 @@ window.onload = () => {
 	}
 
 	$("semestre").textContent = currentSemester(
-		new Date("01-01-2022"),
+		new Date("2022-01-01"),
 		new Date()
 	)
 
