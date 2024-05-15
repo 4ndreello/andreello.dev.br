@@ -25,7 +25,7 @@ const projects = [
 			alert("Projeto privado :(")
 		},
 		descriptionText:
-			"Um projeto CRUD privado para uma escola, que contém: cadastros (aluno, professor, turma, ...), emissão de boletim e relatórios, etc.",
+			"Um projeto CRUD privado para uma escola, que contém: cadastros (aluno, professor, turma, ...), emissão de boletim, relatórios, etc.",
 	}),
 ]
 
