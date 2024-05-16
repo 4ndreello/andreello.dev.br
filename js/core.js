@@ -66,6 +66,7 @@ window.onload = () => {
 /**
  * UTILS
  */
+
 function isMobile() {
 	return Boolean(
 		navigator.userAgent.match(/Android/i) ||
@@ -83,6 +84,7 @@ const $ = (id) => document.getElementById(id)
 /**
  * THEME
  */
+
 function createTheme() {
 	const currentTheme = window.localStorage.getItem("theme")
 	if (!currentTheme) {
@@ -116,10 +118,6 @@ function changeTheme() {
 	)
 	setCurrentTheme()
 }
-
-/**
- * INCLUDE PROJECT
- */
 
 function addProject(data) {
 	return () => {

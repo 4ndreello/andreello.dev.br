@@ -4,11 +4,6 @@
 	--secondaryColor: rgb(181, 75, 75);
 }
 
-/* @font-face {
-	font-family: "system-ui";
-	src: url("./geist.woff") format("woff"), url("./geist.woff2") format("woff2");
-} */
-
 @font-face {
 	font-family: "Comic";
 	src: url("./comic.woff") format("woff");
