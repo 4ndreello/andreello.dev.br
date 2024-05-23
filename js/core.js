@@ -27,6 +27,12 @@ const projects = [
 		descriptionText:
 			"Um projeto CRUD privado para uma escola, que contém: cadastros (aluno, professor, turma, ...), emissão de boletim, relatórios, etc.",
 	}),
+
+	addProject({
+		languageText: "Java",
+		projectNameText: "Java-Api",
+		descriptionText: "Uma simples API usando Spring Boot e Java 17",
+	}),
 ]
 
 //////////////////////////////////////////////////////
