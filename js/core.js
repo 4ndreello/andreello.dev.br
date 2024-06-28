@@ -94,7 +94,8 @@ const $ = (id) => document.getElementById(id)
 function createTheme() {
 	const currentTheme = window.localStorage.getItem("theme")
 	if (!currentTheme) {
-		window.localStorage.setItem("theme", "white")
+		const navThemeDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+		window.localStorage.setItem("theme", mavThemeDark ? "black" : "white")
 	}
 }
 
