@@ -95,7 +95,7 @@ function createTheme() {
 	const currentTheme = window.localStorage.getItem("theme")
 	if (!currentTheme) {
 		const navThemeDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-		window.localStorage.setItem("theme", mavThemeDark ? "black" : "white")
+		window.localStorage.setItem("theme", navThemeDark ? "black" : "white")
 	}
 }
 
