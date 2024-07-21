@@ -82,14 +82,5 @@ a {
 
 #projects {
 	display: flex;
-}
-
-@media (max-width: 400px) {
-	#projects {
-		display: block;
-	}
-
-	.outline {
-		margin-bottom: 15px;
-	}
+	flex-wrap: wrap;
 }
