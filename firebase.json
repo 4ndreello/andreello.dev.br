@@ -2,6 +2,13 @@
 	"hosting": {
 		"public": "./public/",
 		"ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+		"redirects": [
+			{
+				"source": "/curriculo",
+				"destination": "https://drive.google.com/file/d/1VgF-CcwIawYLKhvtKUO-dGbYaplQR_qI/view?usp=sharing",
+				"type": 302
+			}
+		],
 		"rewrites": [
 			{
 				"source": "**",
