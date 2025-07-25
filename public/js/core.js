@@ -75,7 +75,9 @@ function animateStatValues() {
 function updateLanguages(languages) {
 	const container = $("languages-breakdown")
 
-	container.innerHTML = languages
+	const firstFive = languages.slice(0, 5)
+
+	container.innerHTML = firstFive
 		.map((lang, index) => {
 			return `
 			<div class="language-row" style="animation-delay: ${index * 0.1}s">
