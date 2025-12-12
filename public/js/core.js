@@ -108,28 +108,70 @@ function showStatsError() {
 /**
  * SETUP
  */
+// Exibe a joke assim que o DOM estiver pronto
+document.addEventListener('DOMContentLoaded', () => {
+       const jokes = [
+	       'Ajeitando os pixels...',
+	       'Compilando piadas ruins...',
+	       'Buscando café no servidor...',
+	       'Consultando Stack Overflow...',
+	       'Chamando o Gabriel...',
+	       'Fazendo deploy do loading...',
+	       'Convertendo café em código...',
+	       'undefined is not a function... ops!',
+	       'Resolvendo promises que nunca cumpro...',
+	       'Debugando em produção (não conte pra ninguém)...',
+	       'Esperando o npm install terminar...',
+	       '[object Object]... ops!',
+	       'Copiando código do Stack Overflow...',
+	       'Tentando entender meu próprio código...',
+	       'git push --force (YOLO)...',
+	       'Procurando o ponto e vírgula perdido...',
+	       'Reiniciando o servidor pela 47ª vez...',
+	       'Culpando o cache por tudo...',
+	       'Funciona na minha máquina ¯\\_(ツ)_/¯',
+	       'Refatorando código que já funciona...',
+	       'Adicionando mais um framework JS...',
+	       'Esperando o build... tempo de café!',
+	       'NaN NaN NaN NaN',
+	       'Prometo que vai carregar logo...',
+       ];
+       const joke = jokes[Math.floor(Math.random() * jokes.length)];
+       const loadingJoke = document.getElementById('loading-joke');
+       if (loadingJoke) loadingJoke.textContent = joke;
+});
+
 window.onload = () => {
-	createTheme()
-	setCurrentTheme()
+       createTheme()
+       setCurrentTheme()
 
-	const currentSemester = (dateFrom, dateTo) => {
-		const result =
-			dateTo.getMonth() -
-			dateFrom.getMonth() +
-			12 * (dateTo.getFullYear() - dateFrom.getFullYear())
-		return Math.ceil(result / 6)
-	}
+       // Esconde o loading após aplicar o tema
+       setTimeout(() => {
+	       const loading = document.getElementById('global-loading')
+	       if (loading) {
+		       loading.classList.add('hide')
+		       setTimeout(() => loading.remove(), 350)
+	       }
+       }, 500)
 
-	$("semestre").textContent = currentSemester(
-		new Date("2022-01-01"),
-		new Date()
-	)
+       const currentSemester = (dateFrom, dateTo) => {
+	       const result =
+		       dateTo.getMonth() -
+		       dateFrom.getMonth() +
+		       12 * (dateTo.getFullYear() - dateFrom.getFullYear())
+	       return Math.ceil(result / 6)
+       }
 
-	for (const project of projects) {
-		project()
-	}
+       $("semestre").textContent = currentSemester(
+	       new Date("2022-01-01"),
+	       new Date()
+       )
 
-	loadCodingStats()
+       for (const project of projects) {
+	       project()
+       }
+
+       loadCodingStats()
 }
 
 /**
