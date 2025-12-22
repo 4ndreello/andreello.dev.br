@@ -7,6 +7,11 @@
 				"source": "/curriculo",
 				"destination": "https://drive.google.com/file/d/1nzgnIj4aJMWLztIwpXNhCEY2rgCdkwN5/view?usp=sharing",
 				"type": 302
+			},
+			{
+				"source": "/",
+				"destination": "https://app.andreello.dev.br",
+				"type": 302
 			}
 		],
 		"rewrites": [
