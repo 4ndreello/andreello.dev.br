@@ -3,17 +3,32 @@
  */
 const projects = [
 	addProject({
+		languageText: "Vanilla / Nestjs",
+		projectNameText: "Tech News",
+		clickCallback: () => {
+			showProjectModal({
+				title: "Tech News",
+				options: [
+					{
+						label: "Frontend (Vanilla)",
+						url: "https://github.com/4ndreello/tech-news",
+					},
+					{
+						label: "Backend (Nestjs)",
+						url: "https://github.com/4ndreello/tech-news-api",
+					}
+				]
+			})
+		},
+		descriptionText:
+			"Agregador de notícias de tecnologia com frontend em React e API em Node.js. Sistema completo com ranking inteligente e integração com múltiplas fontes.",
+	}),
+	addProject({
 		languageText: "Next.js",
 		projectNameText: "DOCUments",
 		customURL: "https://github.com/docu-wiki-br/docu",
 		descriptionText:
 			"É uma simples Wiki que permite usuários criarem, editarem e deletarem DOCUmentos. Ainda em fase de desenvolvimento.",
-	}),
-	addProject({
-		languageText: "Java",
-		projectNameText: "Java-Tree",
-		descriptionText:
-			"Ao passar uma arquivo HTML, ele pega o texto com o elemento mais profundo",
 	}),
 	addProject({
 		languageText: "Node.js / Express",
@@ -23,11 +38,6 @@ const projects = [
 		},
 		descriptionText:
 			"Um projeto CRUD privado para uma escola, que contém: cadastros (aluno, professor, turma, ...), emissão de boletim, relatórios, etc.",
-	}),
-	addProject({
-		languageText: "Java",
-		projectNameText: "Java-Api",
-		descriptionText: "Uma simples API usando Spring Boot e Java 17",
 	}),
 ]
 
@@ -268,4 +278,94 @@ function addProject(data) {
 			projectsContainer.appendChild(container)
 		}
 	}
+}
+
+/**
+ * PROJECT MODAL
+ */
+function showProjectModal(data) {
+	const { title, options } = data
+
+	// Create overlay
+	const overlay = document.createElement('div')
+	overlay.className = 'project-modal-overlay'
+
+	// Create modal
+	const modal = document.createElement('div')
+	modal.className = 'project-modal'
+
+	// Create header
+	const header = document.createElement('div')
+	header.className = 'project-modal-header'
+
+	const titleElement = document.createElement('h2')
+	titleElement.className = 'project-modal-title'
+	titleElement.textContent = title
+
+	const closeButton = document.createElement('button')
+	closeButton.className = 'project-modal-close'
+	closeButton.innerHTML = '×'
+	closeButton.onclick = () => closeModal(overlay)
+
+	header.appendChild(titleElement)
+	header.appendChild(closeButton)
+
+	// Create options container
+	const optionsContainer = document.createElement('div')
+	optionsContainer.className = 'project-modal-options'
+
+	// Create option elements
+	options.forEach(option => {
+		const optionElement = document.createElement('div')
+		optionElement.className = 'project-modal-option'
+		
+		const icon = document.createElement('span')
+		icon.className = 'project-modal-option-icon'
+		icon.textContent = option.icon
+
+		const label = document.createElement('span')
+		label.className = 'project-modal-option-label'
+		label.textContent = option.label
+
+		optionElement.appendChild(icon)
+		optionElement.appendChild(label)
+
+		optionElement.onclick = () => {
+			window.open(option.url, '_blank')
+			closeModal(overlay)
+		}
+
+		optionsContainer.appendChild(optionElement)
+	})
+
+	// Assemble modal
+	modal.appendChild(header)
+	modal.appendChild(optionsContainer)
+	overlay.appendChild(modal)
+
+	// Close on overlay click
+	overlay.onclick = (e) => {
+		if (e.target === overlay) {
+			closeModal(overlay)
+		}
+	}
+
+	// Add to document
+	document.body.appendChild(overlay)
+
+	// Close on ESC key
+	const handleEscape = (e) => {
+		if (e.key === 'Escape') {
+			closeModal(overlay)
+			document.removeEventListener('keydown', handleEscape)
+		}
+	}
+	document.addEventListener('keydown', handleEscape)
+}
+
+function closeModal(overlay) {
+	overlay.style.animation = 'fadeOut 0.2s ease forwards'
+	setTimeout(() => {
+		overlay.remove()
+	}, 200)
 }
