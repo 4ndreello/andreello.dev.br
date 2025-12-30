@@ -3,21 +3,21 @@
  */
 const projects = [
 	addProject({
-		languageText: "Vanilla / Nestjs",
+		languageText: "ReactJS / Hono",
 		projectNameText: "Tech News",
 		clickCallback: () => {
 			showProjectModal({
 				title: "Tech News",
 				options: [
 					{
-						label: "Frontend (Vanilla)",
+						label: "Frontend (ReactJS)",
 						url: "https://github.com/4ndreello/tech-news",
 					},
 					{
-						label: "Backend (Nestjs)",
+						label: "Backend (Hono)",
 						url: "https://github.com/4ndreello/tech-news-api",
-					}
-				]
+					},
+				],
 			})
 		},
 		descriptionText:
@@ -97,8 +97,8 @@ function updateLanguages(languages) {
 			  </div>
 			  <div class="progress-container">
 				 <div class="progress-bar" style="width: ${lang.percent}%; animation-delay: ${
-				index * 0.1 + 0.3
-			}s"></div>
+						index * 0.1 + 0.3
+					}s"></div>
 			  </div>
 			</div>
 		 `
@@ -119,69 +119,69 @@ function showStatsError() {
  * SETUP
  */
 // Exibe a joke assim que o DOM estiver pronto
-document.addEventListener('DOMContentLoaded', () => {
-       const jokes = [
-	       'Ajeitando os pixels...',
-	       'Compilando piadas ruins...',
-	       'Buscando café no servidor...',
-	       'Consultando Stack Overflow...',
-	       'Chamando o Gabriel...',
-	       'Fazendo deploy do loading...',
-	       'Convertendo café em código...',
-	       'undefined is not a function... ops!',
-	       'Resolvendo promises que nunca cumpro...',
-	       'Debugando em produção (não conte pra ninguém)...',
-	       'Esperando o npm install terminar...',
-	       '[object Object]... ops!',
-	       'Copiando código do Stack Overflow...',
-	       'Tentando entender meu próprio código...',
-	       'git push --force (YOLO)...',
-	       'Procurando o ponto e vírgula perdido...',
-	       'Reiniciando o servidor pela 47ª vez...',
-	       'Culpando o cache por tudo...',
-	       'Funciona na minha máquina ¯\\_(ツ)_/¯',
-	       'Refatorando código que já funciona...',
-	       'Adicionando mais um framework JS...',
-	       'Esperando o build... tempo de café!',
-	       'NaN NaN NaN NaN',
-	       'Prometo que vai carregar logo...',
-       ];
-       const joke = jokes[Math.floor(Math.random() * jokes.length)];
-       const loadingJoke = document.getElementById('loading-joke');
-       if (loadingJoke) loadingJoke.textContent = joke;
-});
+document.addEventListener("DOMContentLoaded", () => {
+	const jokes = [
+		"Ajeitando os pixels...",
+		"Compilando piadas ruins...",
+		"Buscando café no servidor...",
+		"Consultando Stack Overflow...",
+		"Chamando o Gabriel...",
+		"Fazendo deploy do loading...",
+		"Convertendo café em código...",
+		"undefined is not a function... ops!",
+		"Resolvendo promises que nunca cumpro...",
+		"Debugando em produção (não conte pra ninguém)...",
+		"Esperando o npm install terminar...",
+		"[object Object]... ops!",
+		"Copiando código do Stack Overflow...",
+		"Tentando entender meu próprio código...",
+		"git push --force (YOLO)...",
+		"Procurando o ponto e vírgula perdido...",
+		"Reiniciando o servidor pela 47ª vez...",
+		"Culpando o cache por tudo...",
+		"Funciona na minha máquina ¯\\_(ツ)_/¯",
+		"Refatorando código que já funciona...",
+		"Adicionando mais um framework JS...",
+		"Esperando o build... tempo de café!",
+		"NaN NaN NaN NaN",
+		"Prometo que vai carregar logo...",
+	]
+	const joke = jokes[Math.floor(Math.random() * jokes.length)]
+	const loadingJoke = document.getElementById("loading-joke")
+	if (loadingJoke) loadingJoke.textContent = joke
+})
 
 window.onload = () => {
-       createTheme()
-       setCurrentTheme()
+	createTheme()
+	setCurrentTheme()
 
-       // Esconde o loading após aplicar o tema
-       setTimeout(() => {
-	       const loading = document.getElementById('global-loading')
-	       if (loading) {
-		       loading.classList.add('hide')
-		       setTimeout(() => loading.remove(), 350)
-	       }
-       }, 500)
+	// Esconde o loading após aplicar o tema
+	setTimeout(() => {
+		const loading = document.getElementById("global-loading")
+		if (loading) {
+			loading.classList.add("hide")
+			setTimeout(() => loading.remove(), 350)
+		}
+	}, 500)
 
-       const currentSemester = (dateFrom, dateTo) => {
-	       const result =
-		       dateTo.getMonth() -
-		       dateFrom.getMonth() +
-		       12 * (dateTo.getFullYear() - dateFrom.getFullYear())
-	       return Math.ceil(result / 6)
-       }
+	const currentSemester = (dateFrom, dateTo) => {
+		const result =
+			dateTo.getMonth() -
+			dateFrom.getMonth() +
+			12 * (dateTo.getFullYear() - dateFrom.getFullYear())
+		return Math.ceil(result / 6)
+	}
 
-       $("semestre").textContent = currentSemester(
-	       new Date("2022-01-01"),
-	       new Date()
-       )
+	$("semestre").textContent = currentSemester(
+		new Date("2022-01-01"),
+		new Date(),
+	)
 
-       for (const project of projects) {
-	       project()
-       }
+	for (const project of projects) {
+		project()
+	}
 
-       loadCodingStats()
+	loadCodingStats()
 }
 
 /**
@@ -195,7 +195,7 @@ function isMobile() {
 			navigator.userAgent.match(/iPad/i) ||
 			navigator.userAgent.match(/iPod/i) ||
 			navigator.userAgent.match(/BlackBerry/i) ||
-			navigator.userAgent.match(/Windows Phone/i)
+			navigator.userAgent.match(/Windows Phone/i),
 	)
 }
 
@@ -218,15 +218,15 @@ function setCurrentTheme() {
 	const IsWhiteTheme = storage.getItem("theme") === "white"
 	root_theme.style.setProperty(
 		"--bgColor",
-		IsWhiteTheme ? colors.WHITE : colors.BLACK
+		IsWhiteTheme ? colors.WHITE : colors.BLACK,
 	)
 	root_theme.style.setProperty(
 		"--textColor",
-		IsWhiteTheme ? colors.BLACK : colors.WHITE
+		IsWhiteTheme ? colors.BLACK : colors.WHITE,
 	)
 	root_theme.style.setProperty(
 		"--secondaryColor",
-		IsWhiteTheme ? "rgb(181, 75, 75)" : "#532991"
+		IsWhiteTheme ? "rgb(181, 75, 75)" : "#532991",
 	)
 }
 
@@ -234,7 +234,7 @@ function changeTheme() {
 	const currentTheme = window.localStorage.getItem("theme")
 	window.localStorage.setItem(
 		"theme",
-		currentTheme === "white" ? "dark" : "white"
+		currentTheme === "white" ? "dark" : "white",
 	)
 	setCurrentTheme()
 }
@@ -287,51 +287,51 @@ function showProjectModal(data) {
 	const { title, options } = data
 
 	// Create overlay
-	const overlay = document.createElement('div')
-	overlay.className = 'project-modal-overlay'
+	const overlay = document.createElement("div")
+	overlay.className = "project-modal-overlay"
 
 	// Create modal
-	const modal = document.createElement('div')
-	modal.className = 'project-modal'
+	const modal = document.createElement("div")
+	modal.className = "project-modal"
 
 	// Create header
-	const header = document.createElement('div')
-	header.className = 'project-modal-header'
+	const header = document.createElement("div")
+	header.className = "project-modal-header"
 
-	const titleElement = document.createElement('h2')
-	titleElement.className = 'project-modal-title'
+	const titleElement = document.createElement("h2")
+	titleElement.className = "project-modal-title"
 	titleElement.textContent = title
 
-	const closeButton = document.createElement('button')
-	closeButton.className = 'project-modal-close'
-	closeButton.innerHTML = '×'
+	const closeButton = document.createElement("button")
+	closeButton.className = "project-modal-close"
+	closeButton.innerHTML = "×"
 	closeButton.onclick = () => closeModal(overlay)
 
 	header.appendChild(titleElement)
 	header.appendChild(closeButton)
 
 	// Create options container
-	const optionsContainer = document.createElement('div')
-	optionsContainer.className = 'project-modal-options'
+	const optionsContainer = document.createElement("div")
+	optionsContainer.className = "project-modal-options"
 
 	// Create option elements
-	options.forEach(option => {
-		const optionElement = document.createElement('div')
-		optionElement.className = 'project-modal-option'
-		
-		const icon = document.createElement('span')
-		icon.className = 'project-modal-option-icon'
+	options.forEach((option) => {
+		const optionElement = document.createElement("div")
+		optionElement.className = "project-modal-option"
+
+		const icon = document.createElement("span")
+		icon.className = "project-modal-option-icon"
 		icon.textContent = option.icon
 
-		const label = document.createElement('span')
-		label.className = 'project-modal-option-label'
+		const label = document.createElement("span")
+		label.className = "project-modal-option-label"
 		label.textContent = option.label
 
 		optionElement.appendChild(icon)
 		optionElement.appendChild(label)
 
 		optionElement.onclick = () => {
-			window.open(option.url, '_blank')
+			window.open(option.url, "_blank")
 			closeModal(overlay)
 		}
 
@@ -355,16 +355,16 @@ function showProjectModal(data) {
 
 	// Close on ESC key
 	const handleEscape = (e) => {
-		if (e.key === 'Escape') {
+		if (e.key === "Escape") {
 			closeModal(overlay)
-			document.removeEventListener('keydown', handleEscape)
+			document.removeEventListener("keydown", handleEscape)
 		}
 	}
-	document.addEventListener('keydown', handleEscape)
+	document.addEventListener("keydown", handleEscape)
 }
 
 function closeModal(overlay) {
-	overlay.style.animation = 'fadeOut 0.2s ease forwards'
+	overlay.style.animation = "fadeOut 0.2s ease forwards"
 	setTimeout(() => {
 		overlay.remove()
 	}, 200)
